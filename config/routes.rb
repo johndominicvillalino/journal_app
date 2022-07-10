@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
 
+  #category
+
   get '/categories' => 'categories#index'
 
   get '/categories/id' => 'categories#show'
@@ -11,6 +13,16 @@ Rails.application.routes.draw do
 
 
 
+  #task
 
-  # root "articles#index"
+  # get '/tasks' => 'tasks#index'
+
+  # post '/tasks' => 'tasks#index'
+
+  # get '/tasks/id' => 'tasks#show'
+
+  # delete '/tasks/:id' => 'tasks#destroy'
+
+  resources :tasks
+
 end
