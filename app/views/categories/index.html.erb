@@ -1,16 +1,20 @@
 
+    <%= link_to new_category_path do %>
+        <button  class="border-2 p-2 text-red-200 rounded-full bg-blue-500 text-white text-sm"  >
+            + Category
+        <button>
+    <% end %>
 
-
-<table style="width:50%;margin:auto">
+<table style="width:50%;margin: 20px auto">
   <tr>
-    <th></th>
+    <th style="border:0"></th>
     <th>Category Name</th>
     <th>Action</th>
   </tr>
   <% @categories.each do |category| %>
   <tr>
  
-  <td class="edit-class bg-white text-center">
+  <td class="edit-class bg-white text-center text-slate-200 hover:text-blue-500">
    <%= link_to "edit", edit_category_path(category.id) %>
   
   </td>
@@ -18,7 +22,7 @@
     <td>  <%= link_to category.name, category_path(category.id) %></td>
   
     <td>
-      <%= link_to "Add Task", new_category_task_path(category.id) %> 
+      <%= link_to "+ Task", new_category_task_path(category.id), :class => " p-2 text-black-200  rounded-full hover:bg-blue-500 hover:text-white text-sm" %> 
     </td>
 
   </tr>
@@ -26,11 +30,6 @@
      
 </table>
 
-    <%= link_to new_category_path do %>
-        <button>
-            New Category
-        <button>
-    <% end %>
 
 
 

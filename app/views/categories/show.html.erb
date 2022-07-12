@@ -1,17 +1,47 @@
 
-<%= button_to "Delete #{@cat.name}", @cat, method: :delete, :class => "delete" %>
+
+<div class='flex gap-5 align-center'>
+<div>
+    <%= button_to "Delete This Category", @cat, method: :delete, :class => "border-2 p-2 text-red-200 rounded-lg hover:bg-red-500 hover:text-white text-sm" %>
+</div>
+<div>
+    <%= button_to "+ task", @cat, method: :delete, :class => "border-2 p-2 text-red-200 rounded-full hover:bg-blue-500 hover:text-white text-sm" %>
+</div>
+</div>
 
 
+<div class="mt-10">
+
+<table style="width:50%;margin:auto">
+  <tr>
+    <th style="border:0"></th>
+    <th>Category Name</th>
+    <th>Action</th>
+  </tr>
 <%  @cat.tasks.each do |task| %>
+  <tr>
+ 
+  <td class="edit-class bg-white text-center text-slate-200 hover:text-blue-500">
+   <%= link_to "edit", edit_category_task_path(task.id) %>
+  
+  </td>
 
-    <%= task.name %>
+    <td>  <%= link_to task.name, category_task_url(id:task.id, category_id:task.category_id) %></td>
+  
+    <td>
+        <%= link_to "Delete", category_task_url(id:task.id, category_id:task.category_id) , :method => 'delete' %>
+    </td>
 
-<% end %>
+  </tr>
+     <% end %>
+     
+</table>
+
+</div>
 
 
 
 
-    <%= link_to "back", root_path %>
 
   
 

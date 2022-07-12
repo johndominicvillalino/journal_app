@@ -12,14 +12,19 @@
   </head>
 
   <body>
+  
+  <div class="text-center pt-20">
   <%= notice %>
-    <main class="container mx-auto mt-28 px-5 flex flex-col">
+  </div>
+    <main class="container mx-auto mt-10 px-5 flex flex-col">
 
     <div class="container flex justify-center items-center flex-col">
     <div class="flex flex flex-col text-center mb-20">
+      <%= link_to root_path do %>
         <h1 class="drop-shadow-lg">
             To Do List
         </h1>
+        <%end %>
         <p class="text-gray-500">
             Work Hard, Party Harder!
         </p>

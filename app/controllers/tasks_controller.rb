@@ -43,8 +43,6 @@ class TasksController < ApplicationController
 
         @task = Task.new
 
-        
-
     end
 
 
@@ -65,8 +63,7 @@ class TasksController < ApplicationController
     def set_task
         
         @task = Task.find(params[:id])
-        
-
+    
     end
 
   
