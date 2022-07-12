@@ -1,10 +1,17 @@
 
+<%= button_to "Delete #{@cat.name}", @cat, method: :delete, :class => "delete" %>
+
 
 <%  @cat.tasks.each do |task| %>
 
     <%= task.name %>
 
 <% end %>
+
+
+
+
+    <%= link_to "back", root_path %>
 
   
 

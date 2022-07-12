@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   # get '/categories/new' => 'categories#new'
 
 
-  resources :categories
+  resources :categories do 
+    resources :tasks
+  end
+
+
 
 
   #task
@@ -25,7 +29,6 @@ Rails.application.routes.draw do
 
   # delete '/tasks/:id' => 'tasks#destroy'
 
-  resources :tasks
 
   
 

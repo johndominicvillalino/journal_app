@@ -38,3 +38,8 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.edit-class {
+  font-size: 10px;
+  border: 0;
+}

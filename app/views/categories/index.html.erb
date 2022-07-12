@@ -1,35 +1,37 @@
 
 
-<div class="container flex justify-center items-center flex-col">
-    <div class="flex flex flex-col text-center mb-20">
-        <h1 class="drop-shadow-lg">
-            To Do List
-        </h1>
-        <p class="text-gray-500">
-            Work Hard, Party Harder!
-        </p>
-    </div>
-    
-</div>
 
 <table style="width:50%;margin:auto">
   <tr>
+    <th></th>
     <th>Category Name</th>
     <th>Action</th>
   </tr>
   <% @categories.each do |category| %>
   <tr>
+ 
+  <td class="edit-class bg-white text-center">
+   <%= link_to "edit", edit_category_path(category.id) %>
+  
+  </td>
+
     <td>  <%= link_to category.name, category_path(category.id) %></td>
-    <td>Add Task</td>
+  
+    <td>
+      <%= link_to "Add Task", new_category_task_path(category.id) %> 
+    </td>
+
   </tr>
      <% end %>
      
 </table>
 
+    <%= link_to new_category_path do %>
+        <button>
+            New Category
+        <button>
+    <% end %>
 
-<button>
-New Category
-<button>
 
 
 
