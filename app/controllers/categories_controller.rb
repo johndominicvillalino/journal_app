@@ -1,12 +1,20 @@
 class CategoriesController < ApplicationController
 
+    before_action :set_category, only: %i[ show ]
+
     def index
-     
+
+        @categories = Category.all
+        @cat = Category.joins( :tasks)
+
     end
 
     def show
 
+        
+
     end
+
 
     def create 
 
@@ -28,5 +36,13 @@ class CategoriesController < ApplicationController
     def category_params
         params.permit( :name)
     end
+
+    private
+    def set_category
+        
+        @cat = Category.find(params[:id])
+
+    end
+
 
 end

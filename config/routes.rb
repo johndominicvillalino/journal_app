@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
+
+
+  root "categories#index"
  
 
   #category
 
-  get '/categories' => 'categories#index'
+  # get '/categories' => 'categories#index'
+  # get '/categories/:id' => 'categories#show'
+  # post '/categories' => 'categories#create'
+  # get '/categories/new' => 'categories#new'
 
-  get '/categories/id' => 'categories#show'
 
-  post '/categories' => 'categories#create'
-
-  get '/categories/new' => 'categories#new'
-
+  resources :categories
 
 
   #task
@@ -24,5 +26,8 @@ Rails.application.routes.draw do
   # delete '/tasks/:id' => 'tasks#destroy'
 
   resources :tasks
+
+  
+
 
 end

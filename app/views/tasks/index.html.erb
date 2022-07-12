@@ -1,8 +1,41 @@
 
+<div class="container flex justify-center items-center flex-col">
 
-<% @tasks.each do |x|  %>
+
+<div class="flex flex flex-col text-center mb-20">
+
+    <h1 class="drop-shadow-lg">
+        To Do List
+    </h1>
+
+    <p class="text-gray-500">
+        Work Hard, Party Harder!
+    </p>
+
+</div>
 
 
-<%= link_to x.id, task_path(x.id) %>
+
+    <% @tasks.each do |task|  %>
+    <div class="container flex w-3/5 justify-between"> 
+
+        <%= task.name %>
+           
+         <%= link_to task_path(task.id) do %>
+        <button class="">
+        Details 
+        </button>
+        <% end %>
+
+        <div>
+        <%= task.deadline.strftime "%d/%m/%Y %H:%M"  %>
+        </div>
+
+        <div>
+        <%= task.category_id %>
+        </div>
+
+    </div>
+</div>
 
 <% end %>
