@@ -51,12 +51,7 @@ gem "tailwindcss-rails"
 # Use Sass to process CSS
 # gem "sassc-rails"
 
-
-group :production do
-
 gem 'pg'
-
-end
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
