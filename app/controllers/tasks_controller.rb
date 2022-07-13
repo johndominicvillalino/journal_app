@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
 
 
-    before_action :set_task, only: %i[show destroy]
-    before_action :get_cat, only: %i[ new create]
+    before_action :set_task, only: %i[show destroy edit update]
+    before_action :get_cat, only: %i[ new create edit update]
 
     def index
 
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
 
 
     def show
-
+        
 
     end
 
@@ -35,8 +35,15 @@ class TasksController < ApplicationController
     def destroy 
  
         @task.destroy
-  
 
+        
+        respond_to do |format|
+            format.html { redirect_to category_path(@task.category_id), notice: "#{@task.name} was deleted"}
+          end
+
+    end
+
+    def edit
     end
 
     def new
@@ -44,6 +51,17 @@ class TasksController < ApplicationController
         @task = Task.new
 
     end
+
+
+    def update
+        respond_to do |format|
+          if @task.update(task_params)
+            format.html { redirect_to category_path(@task.category_id), notice: "#{@task.name} was successfully updated." }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+          end
+        end
+      end
 
 
          

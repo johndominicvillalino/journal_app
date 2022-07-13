@@ -1,0 +1,46 @@
+
+
+
+
+    
+<div class='flex gap-5 items-center justify-center mb-10'>
+<div>
+    <%= button_to "Delete", @cat, method: :delete, :class => "border-2 p-2 text-red-200 rounded-lg hover:bg-red-500 hover:text-white text-sm" %>
+</div>
+<div>
+    <%= link_to edit_category_task_url(category_id:@task.category_id,id:@task.id) do %>
+    <button class="border-2 p-2 text-blue-200 rounded-lg hover:bg-blue-500 hover:text-white text-sm" >Update</button>
+    <% end %>
+</div>
+</div>
+    
+
+
+    <table style="width:50%;margin:auto">
+    <tr>
+        <th style="border-right:0"><%= @task.name %></th>
+        <th style="border-left:0">
+    
+        </th>
+        </tr>
+    <tr>
+        <td>
+            Description
+        </td>
+        <td>
+           <%= @task.description %>
+        </td>
+    </tr>
+      <tr>
+        <td>
+            Deadline
+        </td>
+        <td>
+           <%= @task.deadline %>
+        </td>
+    </tr>
+
+    </table>
+    
+
+</div>
