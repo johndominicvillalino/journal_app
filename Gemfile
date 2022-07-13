@@ -46,6 +46,8 @@ gem "bootsnap", require: false
 
 gem "tailwindcss-rails"
 
+gem 'pg'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
