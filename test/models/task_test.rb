@@ -1,9 +1,12 @@
 require "test_helper"
 
 class TaskTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+
+
+  test "the truth" do
+    assert true
+  end
 
 
   test "test_creating" do
@@ -25,15 +28,5 @@ class TaskTest < ActiveSupport::TestCase
     assert_equal @task.category, @category
 
   end
-
-
-
-
-
-
-
-
-
-
 
 end
