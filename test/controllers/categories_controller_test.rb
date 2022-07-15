@@ -6,8 +6,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         @category = categories(:one)  
      end
 
-
-
     test "should get index" do
         get categories_path
         assert_response :success
@@ -18,6 +16,14 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
+    test "should destroy category" do 
+
+        assert_difference('Category.count', -1) do
+            delete category_path(@category)
+        end
+        assert_redirected_to categories_path
+    end
+
     test "should create category" do
         post categories_path, params: { 
             category: {
@@ -26,5 +32,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         }
         assert_redirected_to categories_path
     end
+
+    test "Category should be unqiue" do
+        one = categories(:one)
+        two = categories(:two)
+        one.name = two.name
+        assert_not one.valid?
+      end
+
 
 end

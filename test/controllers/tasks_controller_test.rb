@@ -4,34 +4,32 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     setup do
        @task = tasks(:one)  
+       @category = categories(:one)
     end
 
-    test "should get index" do
-
-        get tasks_path
+    test "should show task" do
+        get category_task_path(category_id: @task.category_id, id:@task.id)
         assert_response :success
-
     end
 
     test "should create a task" do
+        post category_tasks_path(category_id:@category.id), params: {task: {name:"name", description:"description", category_id:@category.id, deadline: Time.new}}
+        assert_redirected_to category_path(id:@category.id)
+    end
 
-        post tasks_path, params: { task: {
-                id: @task.id,
-                category_id: @task.category_id,
-                name: @task.name,
-                description: @task.description,
-                deadline: @task.deadline
-            }
-        }
-        assert_response :success
+    test "should destroy a task" do
+
+
+
+        assert_difference "Task.count",-1 do
+            delete category_task_path(category_id:@task.category_id,id:@task.id)
+        end
+
+        assert_redirected_to category_path(@task.category_id)
 
     end
 
-    test 'should show tasks' do
-        
-        get task_path(@task.id)
-        assert_response :success
 
-    end
+ 
     
 end

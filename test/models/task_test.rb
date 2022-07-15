@@ -4,19 +4,21 @@ class TaskTest < ActiveSupport::TestCase
 
 
 
-  test "the truth" do
-    assert true
-  end
+  # test "the truth" do
+  #   assert true
+  # end
 
 
   test "test_creating" do
 
-    @category = Category.new
-    @category.save
+    cat = categories(:one)
     @task = Task.new
-    @task.category_id = @category.id
+    @task.category_id = cat.id
+    @task.name = "name"
+    @task.description = "name"
+    @task.deadline = Time.new
   
-    assert_equal @task.save, true 
+    assert @task.save 
 
   end
   
