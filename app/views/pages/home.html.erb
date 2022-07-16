@@ -1,12 +1,11 @@
-  
-      <div class="after-logo-row bg-blue-cus">
+        <div class="after-logo-row bg-blue-cus">
 
         <div class="flex items-center gap-5 w-32" >
         
           <%= image_tag ("/assets/star"), class: "" %>
 
           <h2>
-          Documentation
+            Documentation
           </h2>
         
       </div>
@@ -34,14 +33,23 @@
 
       <div class="login-form-container">
       <div class="login-close">
-        <span>X</span>
+       <%= image_tag ("/assets/back-login"), class: "back-login" %>
       </div>
 
         <div>
-            <form>
-                <input type="text" id="username">
-                <input type="password" id="password">
+            <form class='login-form'>
+                <%= image_tag ("/assets/login-logo"), class: "login-logo" %>
+                <input type="text" id="username" placeholder='username'>
+                <input type="password" id="password" placeholder='password'>
+                <button class="login-btn">
+                    Login
+                </button>
+                    
             </form>
+
+        <p class="mt-5 ml-3 text-blue-200 hover:text-blue-600 cursor-pointer">Forgot your password?</p>
+  
+           
             
         </div>
 

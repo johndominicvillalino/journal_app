@@ -8,8 +8,15 @@
     
 }
 
+.back-login {
+    width: 30px;
+    filter: invert(43%) sepia(11%) saturate(2003%) hue-rotate(167deg) brightness(93%) contrast(92%);
+
+}
+
 body {
     font-family: 'Roboto', sans-serif;
+
 }
 
 .logo-image {
@@ -44,6 +51,16 @@ body {
     font-size: 20px;
 }
 
+.login,#closeLogin,.back-login {
+    transition: all .40s;
+    cursor: pointer;
+}
+
+.login:hover, .back-login:hover {
+    transform: scale(1.1);
+}
+
+
 .after-logo-row > div:nth-child(1) > img {
     width: 20px;
     filter: invert(100%) sepia(0%) saturate(7438%) hue-rotate(285deg) brightness(111%) contrast(97%);
@@ -73,10 +90,15 @@ body {
   
 }
 
-.get-started {
+.get-started{
     background-color: #274472;
     padding: 20px 40px;
     color: white;
     font-size: 20px;
     border-radius: 50px;
+    transition: all .40s;
+}
+
+.get-started:hover {
+    transform: scale(1.1);
 }

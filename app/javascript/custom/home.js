@@ -1,7 +1,18 @@
+import "jquery"
 
-import 'jquery'
+$('.back-login').on('click', function() {
+    
+    $('.login-form-container').animate({width:'toggle'},350);
+    
+})
 
-$('.login-form-container').css("border", "13px solid red")
+$('.login').on('click', function() {
+    $('.login-form-container').animate({width:'toggle', },350).css('display','flex');
+})
 
-alert('test')
+
+
+
+
+
 
