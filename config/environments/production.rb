@@ -12,8 +12,6 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  config.assets.compile = true
-
   config.secret_key_base = '571cb640a83d44012996cce9982f63ed5757ac0f7be32633bbf96862ea2de6e48824ec547b75953596b2fa7505124403d69904ba02e2e6b7541f07e8530f68f3'
 
   # Full error reports are disabled and caching is turned on.
