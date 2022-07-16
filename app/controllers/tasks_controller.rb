@@ -4,11 +4,6 @@ class TasksController < ApplicationController
     before_action :set_task, only: %i[show destroy edit update]
     before_action :get_cat, only: %i[ new create edit update]
 
-    def index
-
-        @tasks = Task.all
-        
-    end
 
 
     def show

@@ -12,6 +12,8 @@
   </head>
 
   <body>
+
+  <% if action_name != 'home' %>
   
   <div class="text-center pt-20">
   <%= notice %>
@@ -29,11 +31,11 @@
             Work Hard, Party Harder!
         </p>
     </div>
-    
-</div>
 
+    <% end %>
 
-      <%= yield %>
+    </div>
+      <%= yield %> 
     </main>
   </body>
 </html>

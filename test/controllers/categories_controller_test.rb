@@ -41,4 +41,38 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
       end
 
 
+      test "should update category" do
+
+        patch category_path(@category) , params: { category: {
+            name: 'new name of cat'
+        }}
+
+        follow_redirect!
+        assert_response :success
+        
+      end
+
+      test "if update fails, should render edit" do
+
+
+        patch category_path(@category) , params: { category: {
+            name: ''
+        }}
+
+        assert_response 422
+
+      end
+
+
+      test "should fail create if params missing" do 
+
+        post categories_path, params: {category: {
+            name: ''
+        }}
+
+        assert_response 422
+
+      end
+
+
 end

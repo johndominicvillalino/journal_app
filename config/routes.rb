@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root "categories#index"
+  root "pages#home"
  
 
   #category

@@ -19,8 +19,6 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     test "should destroy a task" do
 
-
-
         assert_difference "Task.count",-1 do
             delete category_task_path(category_id:@task.category_id,id:@task.id)
         end
@@ -29,6 +27,50 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     end
 
+    test "should show all tasks" do
+        
+        post category_tasks_path(category_id:@category.id), params: {task: {name:"name", description:"", category_id:@category.id, deadline: Time.new}}
+        
+        assert_response 422
+    end
+
+
+    test "get create form" do
+
+        get new_category_task_path(@category.id)
+        assert_response :success
+
+    end
+
+    test "should update tasks" do
+
+
+        patch category_task_path(category_id:@task.category_id, id:@task.id), 
+            params: { 
+                task: {
+                    description: "New description test"
+                }
+            }
+
+        follow_redirect!
+        assert_response :success
+
+    end
+
+
+    test "should fail update tasks" do
+
+
+        patch category_task_path(category_id:@task.category_id, id:@task.id), 
+            params: { 
+                task: {
+                    description: ""
+                }
+            }
+
+        assert_response 422
+
+    end
 
  
     
