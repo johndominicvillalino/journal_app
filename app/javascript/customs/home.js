@@ -1,4 +1,4 @@
-import "jquery"
+import 'jquery'
 
 $('.back-login').on('click', function() {
     
