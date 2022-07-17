@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+
+
+body {
+  height: 100vh;
+ 
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+
+p {
+  font-size: 12px;
+  
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.edit-class {
+  font-size: 10px;
+  border: 0;
+}
