@@ -4,4 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
 //= link jquery.min.js
-//= link ../../../javascript/customs
+//= link_tree ../../javascript/customs .js
