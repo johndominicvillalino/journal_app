@@ -1,4 +1,3 @@
-import 'jquery'
 
 $(".back-login").on("click", function () {
     $(".login-form-container").animate({ width: "toggle" }, 350);
