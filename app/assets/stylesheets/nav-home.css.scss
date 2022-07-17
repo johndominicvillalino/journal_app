@@ -73,7 +73,7 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
-    background-image: asset-url('hero-image.jpg',image);
+    background-image: asset_path('hero-image.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
