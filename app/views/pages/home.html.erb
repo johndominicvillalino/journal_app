@@ -20,43 +20,31 @@
 
 
       <div class="login-form-container">
-      <div class="login-close">
-       <%= image_tag ("back-login.svg"), class: "back-login" %>
+        <div class="login-close">
+          <%= image_tag ("back-login.svg"), class: "back-login" %>
+            </div>
+              <div>
+              <%= form_with(model: @login, url: user_session_path ) do |form| %>
+                  <% if @login.errors.any? %>
+                      <div style="color: red">
+                        <h2><%= pluralize(@login.errors.count, "error") %> prohibited this entry from being saved:</h2>
+                        <ul>
+                          <% @login.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <form class='login-form'>         
+                        <%= image_tag ("login-logo.svg"), class: "login-logo" %>
+                          <%= form.text_field :email, placeholder:'Email' %>
+                          <%= form.text_field :password,placeholder:'password', type:'password' %>
+                        <%= form.submit "Submit", :class => 'login-btn' %>
+                    </form>
+              <p class="mt-5 ml-3 text-blue-200 hover:text-blue-600 cursor-pointer">Forgot your password?</p>
+            </div>
+                 <% end %>
+            
       </div>
 
-        <div>
-
-        <%= form_with(model: @login, url: user_session_path ) do |form| %>
-
-
-        
-<% if @login.errors.any? %>
-
-    <div style="color: red">
-      <h2><%= pluralize(@login.errors.count, "error") %> prohibited this entry from being saved:</h2>
-
-      <ul>
-        <% @login.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-            <form class='login-form'>
-
-    
-                <%= image_tag ("login-logo.svg"), class: "login-logo" %>
-                  <%= form.text_field :email, placeholder:'Email' %>
-                  <%= form.text_field :password,placeholder:'password', type:'password' %>
-                <%= form.submit "Submit", :class => 'login-btn' %>
-
-            </form>
-
-        <p class="mt-5 ml-3 text-blue-200 hover:text-blue-600 cursor-pointer">Forgot your password?</p>
-           
-        </div>
-        
-      </div>
-      <% end %>
 

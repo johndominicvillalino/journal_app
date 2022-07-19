@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable
   has_many :categories, :dependent => :destroy
   has_many :tasks, through: :categories
+  validates :email, presence: true,  uniqueness: { case_sensitive: false }
+  validates :password, length: {minimum:6}
 end
