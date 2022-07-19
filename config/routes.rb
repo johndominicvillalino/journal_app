@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
+  devise_scope :user do
+   root  to: "pages#home"
+  end 
 
-  root "pages#home"
  
+  # root :to => redirect('/users/sign_in')
 
   #category
 

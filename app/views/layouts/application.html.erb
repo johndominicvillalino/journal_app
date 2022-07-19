@@ -14,27 +14,37 @@
 
   <body>
 
-  <% if action_name != 'home' %>
-  
-  <div class="text-center pt-20">
-  <%= notice %>
-  </div>
-    <main class="container mx-auto mt-10 px-5 flex flex-col">
+      <div class="after-logo-row bg-blue-cus">
 
-    <div class="container flex justify-center items-center flex-col">
-    <div class="flex flex flex-col text-center mb-20">
-      <%= link_to root_path do %>
-        <h1 class="drop-shadow-lg">
-            To Do List
-        </h1>
-        <%end %>
-        <p class="text-gray-500">
-            Work Hard, Party Harder!
-        </p>
-    </div>
+        <div class="flex items-center gap-5 w-32" >
+          <%= image_tag ("star.svg"), class: "" %>
+          <h2>
+            Documentation
+          </h2>
+      </div>
 
-    <% end %>
-
+        <div class="flex items-center">
+          <% if user_signed_in? %>
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "logout" %>
+          <% elsif request.path == '/' %>
+            <p class="login">
+              Login
+            </p>
+             <% elsif request.path == '/users/sign_in' %>
+              <%= link_to root_path do %>
+                  <p class="login">
+                    Home
+                  </p>
+              <% end %>
+          <% else %>
+            <%= link_to user_session_path do %>
+              <p class="login">
+                  Login
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
       <%= yield %> 
     </main>
