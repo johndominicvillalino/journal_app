@@ -17,10 +17,9 @@ Rails.application.routes.draw do
   # get '/categories/new' => 'categories#new'
 
 
-  resources :categories do 
-    resources :tasks
-  end
-
+    resources :categories do 
+      resources :tasks
+    end
 
 
 

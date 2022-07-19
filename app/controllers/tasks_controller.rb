@@ -1,13 +1,28 @@
 class TasksController < ApplicationController
 
-
+    before_action :authenticate_user!
     before_action :set_task, only: %i[show destroy edit update]
     before_action :get_cat, only: %i[ new create edit update]
 
+    before_action :auth_route, only: %i[ show edit]
 
+
+
+    def auth_route 
+
+        @category_owner = Category.find(params[:category_id]).user_id
+
+        if @category_owner != current_user.id
+            redirect_to categories_path
+        end
+
+    end
 
     def show
         
+        
+       
+
 
     end
 

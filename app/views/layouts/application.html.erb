@@ -24,6 +24,11 @@
       </div>
 
         <div class="flex items-center">
+
+        <% if user_signed_in? %>
+          <%= current_user.id %>
+        <% end %>
+
           <% if user_signed_in? %>
             <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "logout" %>
           <% elsif request.path == '/' %>

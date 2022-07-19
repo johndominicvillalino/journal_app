@@ -1,21 +1,29 @@
 class CategoriesController < ApplicationController
 
     before_action :authenticate_user!
-
     before_action :set_category, only: %i[ show destroy edit update ]
+    before_action :auth_route, only: %i[ show edit ]
 
 
+
+
+    def auth_route 
+        @category_owner = Category.find(params[:id]).user_id
+
+        if @category_owner != current_user.id
+            redirect_to categories_path
+        end
+    end
 
     def index
-
-        @categories = Category.all
-        @cat = Category.joins( :tasks)
+        
+        @categories = User.find(current_user.id).categories
 
     end
 
     def show
 
-        
+       
 
     end
 
@@ -64,13 +72,14 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-        params.require(:category).permit( :name)
+        params.require(:category).permit( :name, :user_id)
     end
 
     private
     def set_category
         
         @cat = Category.find(params[:id])
+        
 
     end
 
