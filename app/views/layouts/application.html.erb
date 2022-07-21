@@ -53,7 +53,39 @@
     </div>
     <p class='notice'><%= notice %> </p>
     <p class='alert'><%= alert %> </p>
-      <%= yield %> 
+
+    <% if action_name != 'home' %>
+    <div style="background-color:#e8e8e8">
+      <% if bread_crumbs.length == 1 && action_name != 'new' %>
+       All Category
+        <% elsif bread_crumbs.length == 1 && action_name == 'new' %>
+        <%= link_to 'All Category', categories_path %> > <%= action_name %>
+       
+       <% elsif bread_crumbs.length == 2  && action_name != 'edit' %>
+         <%= link_to "All Category", categories_path %> > <%= get_cat_name(bread_crumbs[bread_crumbs.length - 1 ]) %> 
+
+        <% elsif bread_crumbs.length == 2  && action_name == 'edit' %>
+
+         <%= link_to "All Category", categories_path %> > <%= link_to get_cat_name(bread_crumbs[bread_crumbs.length - 1 ]), category_path(params[:id]) %> > <%= action_name %>
+         
+        <% elsif exist_edit_update? %>
+
+         <%= link_to "All Category", categories_path %> > <%= link_to  get_cat_name(bread_crumbs[bread_crumbs.length - 3 ]), category_path(params[:category_id]) %> > <%= link_to get_task_name(bread_crumbs[bread_crumbs.length - 3 ]), category_task_path(params[:category_id],params[:id] )  %> > <%= action_name %> 
+
+         <% elsif exist_new_update? %>
+          <% id = bread_crumbs.map {|x| Integer(x) rescue nil }.compact[0] %>
+          <%= link_to "All Category", categories_path %> > 
+          <%= link_to  get_cat_name(id),category_path(id) %> > New Task
+
+         <% else %>
+          <%= link_to "All Category", categories_path %> > <%= link_to  get_cat_name(bread_crumbs[bread_crumbs.length - 3 ]), category_path(params[:category_id]) %> > <%= get_task_name(bread_crumbs[bread_crumbs.length - 3 ]) %>
+
+       <%end%>
+       <%end%>
+
+    </div>
+        <%= yield %> 
+   
     </main>
    
   </body>

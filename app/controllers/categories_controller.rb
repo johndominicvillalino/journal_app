@@ -5,7 +5,9 @@ class CategoriesController < ApplicationController
     before_action :auth_route, only: %i[ show edit ]
 
 
+    
 
+    
 
     def auth_route 
         @category_owner = Category.find(params[:id]).user_id
@@ -16,7 +18,7 @@ class CategoriesController < ApplicationController
     end
 
     def index
-        
+      
         @categories = User.find(current_user.id).categories
 
     end
