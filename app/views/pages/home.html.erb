@@ -24,22 +24,26 @@
           <%= image_tag ("back-login.svg"), class: "back-login" %>
             </div>
               <div>
-              <%= form_for( resource, as: resource_name, url: session_path(resource_name ) ,data: { turbo: false }) do |form| %>
-              <%= notice %>
-               <% flash do |z,x| %>
-                <%= x %>
-                <%= z %>
+              <%= form_for(resource, as: resource_name, :html => {:class => 'flex flex-col gap-5'} ,  url: session_path(resource_name)) do |f| %>
                 <% end %>
+
+                <div id='login-error'>
+                    Invalid login
+                </div>
+                <br>
+
                     <form class='login-form'>         
                         <%= image_tag ("login-logo.svg"), class: "login-logo" %>
-                          <%= form.text_field :email, placeholder:'Email' %>
-                          <%= form.text_field :password,placeholder:'password', type:'password' %>
-                        <%= form.submit "Submit", :class => 'login-btn' %>
+                          <input id='email', class="login-home-input" name='email' placeholder="Email" type='text'>
+
+                          <input id='name', class="login-home-input"  name='password' placeholder="Password" type='password'>
+
+                          <button class="login-btn" id="loginHome">Login</button>
                     </form>
               <p class="mt-5 ml-3 text-blue-200 hover:text-blue-600 cursor-pointer">Forgot your password?</p>
             </div>
-                 <% end %>
+      
             
       </div>
-
+  <%= javascript_include_tag "customs/home"  %>    
 
