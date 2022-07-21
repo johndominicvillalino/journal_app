@@ -54,7 +54,7 @@
     <p class='notice'><%= notice %> </p>
     <p class='alert'><%= alert %> </p>
 
-    <% if action_name != 'home' %>
+    <% if user_signed_in? %>
     <div style="background-color:#e8e8e8">
       <% if bread_crumbs.length == 1 && action_name != 'new' %>
        All Category
