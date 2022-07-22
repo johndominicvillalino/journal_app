@@ -51,11 +51,10 @@
         </div>
       </div>
     </div>
-    <p class='notice'><%= notice %> </p>
-    <p class='alert'><%= alert %> </p>
+  
 
     <% if user_signed_in? %>
-    <div style="background-color:#e8e8e8">
+    <div class="bread-crumbs" >
       <% if bread_crumbs.length == 1 && action_name != 'new' %>
        All Category
         <% elsif bread_crumbs.length == 1 && action_name == 'new' %>
@@ -82,8 +81,12 @@
 
        <%end%>
        <%end%>
-
     </div>
+        <p class='notice'><%= notice %> </p>
+    <p class='alert'><%= alert %> </p>
+
+<% # action_name %> 
+
         <%= yield %> 
    
     </main>

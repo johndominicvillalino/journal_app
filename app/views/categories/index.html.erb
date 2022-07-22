@@ -1,11 +1,60 @@
 
+
+
+
+<div class="summary-container">
+
+
 <div>
+  <% @categories.each do |category| %>
 
-             <%=  link_to "+ Category", new_category_path, :class => "border-2 p-2 text-red-200 rounded-full bg-blue-500 text-white text-sm"%>
+  <div class="category" > 
   <div>
+    <%= category.name %> 
+    </div>
+      <div>
+      <%= category.tasks.count == 0 ? "-" : category.tasks.count %> 
+  </div>
+
+  </div>
+  <%end%>
+
+
+ <%= link_to new_category_path do %>
+  <div class="add-category">
+  <%= image_tag 'add-btn.svg' %>
+
+ </div>
+   <%end %>
+
+  
+
+</div>
+<div>
+<div class="over-pending-incoming"'>
+  <div>
+  Overdue (<%= overdue_task(current_user.id).count %>)
+  </div>
+  <div>
+  Today (<%= today_task(current_user.id).count %>) 
+  </div>
+  <div>
+  Incoming (<%= incoming_task(current_user.id).count %>)
+  </div>
+</div>
+
+</div>
+
+</div>
 
 
 
+
+
+<!--
+<div>
+    <%=  link_to "+ Category", new_category_path, :class => "border-2 p-2 text-red-200 rounded-full bg-blue-500 text-white text-sm"%>
+  <div>
 <table style="width:50%;margin: 20px auto">
   <tr>
     <th style="border:0"></th>
@@ -14,22 +63,18 @@
   </tr>
   <% @categories.each do |category| %>
   <tr>
- 
-  <td class="edit-class bg-white text-center text-slate-200 hover:text-blue-500">
+   <td class="edit-class bg-white text-center text-slate-
+  200 hover:text-blue-500">
    <%= link_to "edit", edit_category_path(category.id) %>
-  
-  </td>
-
+    </td>
     <td>  <%= link_to category.name, category_path(category.id) %></td>
-  
-    <td>
+      <td>
       <%= link_to "+ Task", new_category_task_path(category.id), :class => " p-2 text-black-200  rounded-full hover:bg-blue-500 hover:text-white text-sm" %> 
     </td>
-
   </tr>
      <% end %>
-     
 </table>
+--->
 
 
 

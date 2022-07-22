@@ -105,3 +105,16 @@ body {
   
     background-color: #274472;
 }
+
+.bread-crumbs {
+    background-color: #e8e8e8;
+    font-size: 12px;
+    padding: 5px 50px;
+    text-align: center;
+    color: #274472;
+    text-transform: uppercase;
+}
+
+.bread-crumbs > a {
+    color: #41729f;
+}

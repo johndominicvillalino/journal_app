@@ -60,4 +60,31 @@ module ApplicationHelper
          ['new'].include? current_path_arr[current_path_arr.length - 1] 
       end
 
+      def overdue_task(user_id)
+
+         tasks = User.find(user_id).tasks.where("deadline < ?",today)
+         
+
+      end
+
+      def today_task(user_id)
+
+        tasks = User.find(user_id).tasks.where("deadline = ?",today)
+       
+     end
+
+
+      def incoming_task(user_id)
+
+         tasks = User.find(user_id).tasks.where("deadline > ?",today)
+        
+      end
+
+
+      def today
+        Time.new.utc.beginning_of_day
+      end
+
+
+
 end
