@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many :categories, :dependent => :destroy
   has_many :tasks, through: :categories
   validates :email, presence: true,  uniqueness: { case_sensitive: false }
-  validates :password, length: {minimum:6}
+  validates :password, presence: true, confirmation: true
 end

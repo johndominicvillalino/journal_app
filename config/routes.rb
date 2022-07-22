@@ -21,6 +21,10 @@ Rails.application.routes.draw do
       resources :tasks
     end
 
+    get '/categories/tasks/today', to: 'pages#today', as:'today_tasks'
+    get '/categories/tasks/overdue', to: 'pages#overdue', as:'overdue_tasks'
+    get '/categories/tasks/incoming', to: 'pages#incoming', as:'incoming_tasks'
+
 
 
   #task

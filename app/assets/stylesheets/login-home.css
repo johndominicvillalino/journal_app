@@ -28,10 +28,11 @@
 }
 
 
-.login-form > input, #new_user > input {
+.login-form > input, #new_user > input, .field_with_errors > input {
 
     border-radius: 20px;
     padding: 8px 15px;
+    width: 100%;
    
 
 }
@@ -67,3 +68,4 @@
     color: red;
     display: none;
 }
+

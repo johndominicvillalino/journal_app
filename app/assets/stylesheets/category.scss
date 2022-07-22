@@ -18,9 +18,9 @@
 
 .summary-container > div:nth-child(2) {
     padding: 10px 0;
+    display:flex;
+ 
 }
-
-
 
 .category {
     font-size: 12px;
@@ -36,7 +36,37 @@
 .over-pending-incoming {
     display:flex;
     justify-content: space-around;
+    margin: auto 0;
+    width: 100%;
 }
+
+
+.over-pending-incoming > a > div {
+    padding: 10px;
+    border: 1px solid #e8e8e8;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.over-pending-incoming > a {
+    transition: box-shadow .40s;
+}
+
+
+.over-pending-incoming > a:nth-child(1):hover  {
+    box-shadow: 0 4px 4px rgba(223, 22, 22, 0.25);
+
+}
+.over-pending-incoming > a:nth-child(2):hover  {
+    box-shadow: 0px 4px 4px rgba(215, 184, 8, 0.25);
+}
+.over-pending-incoming > a:nth-child(3):hover  {
+    box-shadow: 0px 4px 4px rgba(8, 215, 36, 0.25);
+}
+
+
+
 
 .add-category {
     text-align: center;
@@ -56,4 +86,13 @@
 
 .add-category > img:hover {
     transform: scale(1.2);
+}
+
+.category-item {
+    transition: all .40s;
+    cursor: pointer;
+}
+.category-item:hover  {
+    transform: scale(1.1);
+    
 }
