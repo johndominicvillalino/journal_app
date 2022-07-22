@@ -1,0 +1,30 @@
+
+<% @incoming = incoming_task(current_user.id) %>
+
+
+
+<div class="task-container">
+
+ <% @incoming.each do |x| %>
+<div class="task-item-container">
+        <div>
+            <%= x.name%>
+        </div>
+        <div>
+         <%= x.description%>
+        </div>
+   
+         <div>
+           <%= "#{x.deadline.year}-#{x.deadline.month}-#{x.deadline.day}"  %>
+         </div> 
+         <div>
+           <button>DEL</button>
+           <button>EDIT</button>
+         </div> 
+
+
+        </div>
+    <%end%>
+
+</div>
+

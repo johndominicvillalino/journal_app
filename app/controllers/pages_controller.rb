@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
 
+ 
+
 before_action :authenticate_user!, :except => [:home]
+
 
 
  def home
@@ -12,6 +15,8 @@ before_action :authenticate_user!, :except => [:home]
  end
 
  def today
+
+ 
 
  end
  def overdue

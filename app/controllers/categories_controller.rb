@@ -21,6 +21,8 @@ class CategoriesController < ApplicationController
       
         @categories = User.find(current_user.id).categories
 
+        
+
     end
 
     def show

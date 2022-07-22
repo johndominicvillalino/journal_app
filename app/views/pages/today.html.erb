@@ -1,11 +1,11 @@
 
-<% @overdue = overdue_task(current_user.id) %>
+<% @today = today_task(current_user.id) %>
 
 
 
 <div class="task-container">
 
- <% @overdue.each do |x| %>
+ <% @today.each do |x| %>
 <div class="task-item-container">
         <div>
             <%= x.name%>
