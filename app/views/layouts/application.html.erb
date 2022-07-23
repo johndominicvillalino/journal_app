@@ -75,20 +75,27 @@
 
          <%= link_to "All Category", categories_path %> > <%= link_to  get_cat_name(bread_crumbs[bread_crumbs.length - 3 ]), category_path(params[:category_id]) %> > <%= link_to get_task_name(bread_crumbs[bread_crumbs.length - 1 ]), category_task_path(params[:category_id],params[:id] )  %> > <%= action_name %> 
 
+         <%= %>
+
          <% elsif exist_new_update? %>
+
           <% id = bread_crumbs.map {|x| Integer(x) rescue nil }.compact[0] %>
           <%= link_to "All Category", categories_path %> > 
           <%= link_to  get_cat_name(id),category_path(id) %> > New Task
 
-         <% else %>
+          <% elsif  bread_crumbs.length == 4 %>
 
-         <%= link_to "All Category", categories_path %> > <%= link_to  get_cat_name(bread_crumbs[bread_crumbs.length - 3 ]), category_path(params[:category_id]) %> > <%= get_task_name( bread_crumbs[bread_crumbs.length - 1 ]) %> 
+                   <%= link_to "All Category", categories_path %> > <%= link_to  get_cat_name(bread_crumbs[bread_crumbs.length - 3 ]), category_path(params[:category_id]) %> > <%= get_task_name( bread_crumbs[bread_crumbs.length - 1 ]) %> 
+
+         
+      <% else %>
+                <% id = bread_crumbs.map {|x| Integer(x) rescue nil }.compact[0] %>
+              <%= link_to "All Category", categories_path %> > <%= link_to get_cat_name(id), category_path(params[:category_id]) %> > New Task 
 
        <%end%>
        <%end%>
     </div>
-      
-
+    
         <%= yield %> 
    
     </main>
