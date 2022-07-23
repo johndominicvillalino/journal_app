@@ -56,7 +56,7 @@ gem 'devise'
 gem 'httparty'
 
 # Use Sass to process CSS
-gem "sassc-rails"
+gem "sassc-rails" 
 
 gem "pry"
 

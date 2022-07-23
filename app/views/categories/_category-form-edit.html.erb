@@ -2,7 +2,15 @@
 <%= form_with(model: category) do |form| %>
 
 
-
+<% if category.errors.any? %>
+    <div style="color: red" class="text-center">
+          <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="flex flex-col gap-10 justify-center items-center m-auto form-container container m-6">
 
