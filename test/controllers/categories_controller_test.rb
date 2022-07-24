@@ -96,6 +96,17 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
       end
 
+      test 'edit category should categories should have access to categories' do 
+
+        get edit_category_path(@user.categories.first.id)
+        assert_response :success
+         
+ 
+       end
+ 
+ 
+ 
+    
  
 
 
