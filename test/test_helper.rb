@@ -1,6 +1,12 @@
 
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do 
+    add_filter "test/integration/create_category_test.rb"
+    add_filter "app/controllers/turbo_devise_user_controller.rb"
+    add_filter "config/initializers/devise.rb"
+    add_filter "app/helpers/application_helper.rb"
+end
+
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
