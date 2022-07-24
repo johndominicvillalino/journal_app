@@ -1,6 +1,46 @@
 
+<h1 class='page-title' style="margin-top:0;"><%= @cat.name.capitalize%></h1>
+
+<div style="color:green">
+<%= notice %>
+</div>
+
+<div class="task-container">
+<%  @cat.tasks.each do |x| %>
+<div class="task-item-container">
+        <div>
+            <%= x.name%>
+        </div>
+        <div>
+         <%= x.description%>
+        </div>
+         <div>
+           <%= "#{x.deadline.year}-#{x.deadline.month}-#{x.deadline.day}"  %>
+         </div> 
+         <div>
+         <%= link_to edit_category_task_path(category_id:x.category_id,id:x.id) do %>
+           <%= image_tag 'edit.svg', :class => 'edit-cat'%>
+           <% end %>
+
+ <%= button_to  category_task_path(category_id:x.category_id,id:x.id), method: :delete, form: {data: {turbo_confirm: " \n This action will delete  task #{x.name}. \n \n Do you wish to proceed?"}}  do %>
+       <%= image_tag 'trash.svg', :class => 'del-cat' %> 
+        <%end%>
+           <% # image_tag 'trash', :class => 'del-cat' %>
+         </div> 
+        </div>
+    <%end%>
+
+</div>
 
 
+<%= link_to new_category_task_path(params[:id]) do %>
+<div class="add-task-cat">
++
+</div>
+<% end %>
+
+     
+<!-- 
 <div class='flex gap-5 align-center justify-center'>
 <div>
     <%= button_to "Delete This Category", @cat, method: :delete, :class => "border-2 p-2 text-red-200 rounded-lg hover:bg-red-500 hover:text-white text-sm" %>
@@ -37,6 +77,8 @@
 </table>
 
 </div>
+
+-->
 
 
 
