@@ -54,6 +54,7 @@ class CategoriesController < ApplicationController
     def create 
 
         @category = Category.new(category_params)
+        @categories = User.find(current_user.id).categories
 
         respond_to do |format|
      
@@ -68,6 +69,7 @@ class CategoriesController < ApplicationController
     end
 
     def new 
+        @categories = User.find(current_user.id).categories
         @category = Category.new
     end
 

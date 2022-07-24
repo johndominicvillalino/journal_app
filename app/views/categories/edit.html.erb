@@ -42,17 +42,32 @@
     <% end %>
 
     </div>
+
+       <div class="count-and-add">
       <div>
       <%= category.tasks.count == 0 ? "-" : category.tasks.count %> 
   </div>
+<div>
+     <%= link_to new_category_task_path(category.id) do %> 
+       <div class="add-category no-margin">
+
+     <%= image_tag 'add-btn.svg' %>
+     </div>
+    <% end %>
+
+      </div>
 
   </div>
+
+  </div>
+  
   <%end%>
 
 
 
  <%= link_to new_category_path do %>
   <div class="add-category">
+           New category
   <%= image_tag 'add-btn.svg' %>
 
  </div>
