@@ -1,7 +1,6 @@
 
-<%= form_with(model: category) do |form| %>
 
-
+<%= form_with(model: category,:class=> 'cat-update-hidden' ) do |form|%>
 <% if category.errors.any? %>
     <div style="color: red" class="text-center">
           <ul>
@@ -12,17 +11,14 @@
     </div>
   <% end %>
 
-  <div class="flex flex-col gap-10 justify-center items-center m-auto form-container container m-6">
+  <div  class="">
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name ,id:'categoryNameHidden', class:"hideInput" %>
   </div>
 
  <div>
-    <%= form.submit "Submit", :class => 'cursor-pointer border-2 p-2 rounded-lg bg-blue-500 text-white text-sm mb-10' %>
+    <%= form.submit "Submit", id:'submitCatUpdate',class:'hideInput'%>
   </div>
-
-
-    <% end %>
+   <% end %>
 

@@ -20,8 +20,7 @@ class CategoriesController < ApplicationController
     def index
       
         @categories = User.find(current_user.id).categories
-
-        
+       
 
     end
 
@@ -32,15 +31,21 @@ class CategoriesController < ApplicationController
     end
 
     def edit
+
+        @categories = User.find(current_user.id).categories
+
     end
 
 
     def update
+
+        @categories = User.find(current_user.id).categories
+
         respond_to do |format|
           if @cat.update(category_params)
             format.html { redirect_to categories_path, notice: "#{@cat.name} was successfully updated." }
           else
-            format.html { render :edit, status: :unprocessable_entity }
+            format.html { render :edit, notice: "Can't process", status: :unprocessable_entity}
           end
         end
       end

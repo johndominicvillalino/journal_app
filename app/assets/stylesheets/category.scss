@@ -1,5 +1,5 @@
 .summary-container {
-    width: 800px;
+    width: 80%;
     height: auto;
     margin: 20px auto;
     border: 1px solid #e8e8e8;
@@ -24,7 +24,6 @@
 
 .category {
     font-size: 12px;
-    text-transform: uppercase;
     display: flex; 
     margin: 5px 0;
 }
@@ -65,8 +64,21 @@
     box-shadow: 0px 4px 4px rgba(8, 215, 36, 0.25);
 }
 
+.category-item {
+    display:flex;
+    align-items: center;
+    gap: 15px;
+}
 
+.cat-item-name {
+    background-color: transparent;
+    width: fit-content;
+    cursor: pointer;
+}
 
+.cat-item-name:focus {
+    outline: none;
+}
 
 .add-category {
     text-align: center;
@@ -88,3 +100,34 @@
     transform: scale(1.2);
 }
 
+
+.edit-cat {
+    width: 15px;
+ 
+    filter: invert(24%) sepia(24%) saturate(1386%) hue-rotate(177deg) brightness(94%)
+}
+
+.del-cat {
+    filter: invert(22%) sepia(87%) saturate(7074%) hue-rotate(357deg) brightness(96%) contrast(120%);
+    width: 15px;
+}
+
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
+
+.hideInput {
+     display:none;
+}
+
+.cat-update-hidden {
+    position: fixed;
+    top: 220px;
+    left: 40%;
+    right: 40%;
+}

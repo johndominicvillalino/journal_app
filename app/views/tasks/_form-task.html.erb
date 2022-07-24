@@ -1,5 +1,5 @@
 
-<%= form_with(model: task, url:category_tasks_path) do |form| %>
+<%= form_with(model: task, url:category_tasks_path(category_id:cat_id)) do |form| %>
 
 <% if task.errors.any? %>
     <div style="color: red">

@@ -1,6 +1,18 @@
 
 
+<%if notice != nil %>
 
+<% if notice.include? 'created' or notice.include? 'updated' %>
+ <% color='green' %>
+<%elsif%>
+ <% color='red' %>
+
+<%end %>
+<%end %>
+
+<div class="<%="text-center #{color}"%>" >
+<%= notice %>
+</div>
 
 <div class="summary-container">
 
@@ -10,7 +22,16 @@
 
   <div class="category" > 
   <div class="category-item">
-       <%= link_to "edit", edit_category_path(category.id) %> -- <%= link_to category.name, category_path(category.id) %> 
+
+       <%= link_to  edit_category_path(category.id) do %>
+       <%= image_tag 'edit.svg', :class => 'edit-cat', :id => "edit#{category.id}" %> 
+        <%end%>
+        
+        <%= button_to  category_path(category.id), method: :delete, form: {data: {turbo_confirm: " \n This action will delete all tasks in #{category.name} category. \n \n Do you wish to proceed?"}}  do %>
+       <%= image_tag 'trash.svg', :class => 'del-cat' %> 
+        <%end%>
+
+      <%= link_to category.name, category_path(category.id), :class => 'cat-item-name', :id => category.id  %> 
     </div>
       <div>
       <%= category.tasks.count == 0 ? "-" : category.tasks.count %> 

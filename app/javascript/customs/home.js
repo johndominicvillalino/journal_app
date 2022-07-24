@@ -65,25 +65,7 @@ $('#loginHome').on('click', async function (e) {
 
 
 
-  // try {
 
-  //    $.ajax({
-  //     type: 'POST',
-  //     url: '/users/sign_in',
-  //     data: homeLoginData,
-  //     dataType: 'json',
-  //     ContentType: 'application/json'
-  //   })
-
-  //   if(res) {
-  //     console.log(res)
-  //   }
-
-  // } catch (err) {
-
-  //   console.log(err)
-
-  // }
 
 
 
