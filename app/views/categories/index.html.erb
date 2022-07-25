@@ -2,11 +2,10 @@
 
 <%if notice != nil %>
 
-<% if notice.include? 'created' or notice.include? 'updated' %>
+<% if notice.include? 'created' or notice.include? 'updated' or notice.include? 'success' %>
  <% color='green' %>
-<%elsif%>
+<%else%>
  <% color='red' %>
-
 <%end %>
 <%end %>
 
