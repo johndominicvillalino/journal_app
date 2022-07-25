@@ -37,11 +37,8 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     test "should destroy a task" do
     
-
-
         assert_difference "Task.count",-1 do
             delete category_task_path(category_id:@task.category_id,id:@task.id), headers: { "HTTP_REFERER": "/categories/tasks/overdue" } 
-            
         end
 
         follow_redirect!

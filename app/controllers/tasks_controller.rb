@@ -43,12 +43,21 @@ class TasksController < ApplicationController
 
     
     def destroy 
- 
+
+    
         @task.destroy
 
+        @match_url = request.base_url + "/categories/#{@task.category_id}/tasks/#{@task.id}"
         
         respond_to do |format|
-            format.html { redirect_to request.referrer, notice: "#{@task.name} was deleted"}
+
+            @url = request.referrer
+            
+            if(@match_url == request.referrer) 
+                @url = request.base_url + "/categories/#{@task.category_id}"
+            end
+
+            format.html { redirect_to @url, notice: "#{@task.name} was deleted"}
           end
 
     end
