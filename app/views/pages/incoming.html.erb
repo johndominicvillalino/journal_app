@@ -2,6 +2,22 @@
 
 <h1 class='page-title' style="margin-top:0;"><%= action_name.capitalize %></h1>
 
+
+<%if notice != nil %>
+
+<% if notice.include? 'created' or notice.include? 'updated' or notice.include? 'success' %>
+ <% color='green' %>
+<%else%>
+ <% color='red' %>
+<%end %>
+<%end %>
+
+
+<div class="<%="text-center #{color}"%>" >
+<%= notice %>
+</div>
+
+
 <% @incoming = incoming_task(current_user.id) %>
 <div class="task-container">
 

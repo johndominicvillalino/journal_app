@@ -48,7 +48,7 @@ class TasksController < ApplicationController
 
         
         respond_to do |format|
-            format.html { redirect_to category_path(@task.category_id), notice: "#{@task.name} was deleted"}
+            format.html { redirect_to request.referrer, notice: "#{@task.name} was deleted"}
           end
 
     end

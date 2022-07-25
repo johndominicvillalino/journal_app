@@ -17,6 +17,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     end
 
+
     test "should show task" do
         get category_task_path(category_id: @task.category_id, id:@task.id)
         assert_response :success
@@ -35,12 +36,18 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
 
     test "should destroy a task" do
+    
+
 
         assert_difference "Task.count",-1 do
-            delete category_task_path(category_id:@task.category_id,id:@task.id)
+            delete category_task_path(category_id:@task.category_id,id:@task.id), headers: { "HTTP_REFERER": "/categories/tasks/overdue" } 
+            
         end
 
-        assert_redirected_to category_path(@task.category_id)
+        follow_redirect!
+        assert_response :success
+
+
 
     end
 

@@ -1,7 +1,18 @@
 
 <h1 class='page-title' style="margin-top:0;"><%= @cat.name.capitalize%></h1>
 
-<div style="color:green">
+
+<%if notice != nil %>
+
+<% if notice.include? 'created' or notice.include? 'updated' or notice.include? 'success' %>
+ <% color='green' %>
+<%else%>
+ <% color='red' %>
+<%end %>
+<%end %>
+
+
+<div class="<%="text-center #{color}"%>" >
 <%= notice %>
 </div>
 
