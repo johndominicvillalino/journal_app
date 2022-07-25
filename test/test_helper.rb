@@ -5,6 +5,7 @@ SimpleCov.start do
     add_filter "app/controllers/turbo_devise_user_controller.rb"
     add_filter "config/initializers/devise.rb"
     add_filter "app/helpers/application_helper.rb"
+    add_filter 'test/controllers/tasks_controller_test.rb'
 end
 
 

@@ -82,6 +82,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     test "should redirect if not login" do
 
+        
         cat_id = @user_two.categories.first.id
         task_id = @user_two.categories.first.tasks.first.id
         get category_task_path(category_id:cat_id,id:task_id)
