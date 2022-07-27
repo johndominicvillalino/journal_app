@@ -1,0 +1,23 @@
+
+<div class="flex flex-col gap-5 items-center mt-28 h-full">
+<%= form_for(resource, as: resource_name, :html => {:class => 'flex flex-col gap-5'} ,  url: session_path(resource_name)) do |f| %>
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div>
+        <p class='alert  text-center text-red-500'><%= alert %> </p>
+      </div>
+
+
+    <h1>Login</h1>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email' %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password' %>
+    <%= f.submit "Log in", :class => 'login-btn' %>
+
+
+
+<% end %>
+
+</div>
+
+<% #render "devise/shared/links" %>

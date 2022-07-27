@@ -9,31 +9,101 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   </head>
 
   <body>
-  
-  <div class="text-center pt-20">
-  <%= notice %>
-  </div>
-    <main class="container mx-auto mt-10 px-5 flex flex-col">
 
-    <div class="container flex justify-center items-center flex-col">
-    <div class="flex flex flex-col text-center mb-20">
-      <%= link_to root_path do %>
-        <h1 class="drop-shadow-lg">
-            To Do List
-        </h1>
-        <%end %>
-        <p class="text-gray-500">
-            Work Hard, Party Harder!
-        </p>
+      <div class="after-logo-row bg-blue-cus">
+
+        <div class="flex items-center gap-5 w-32" >
+          <%= image_tag ("star.svg"), class: "" %>
+          <h2>
+            Documentation
+          </h2>
+      </div>
+
+        <div class="flex items-center">
+
+        <% if user_signed_in? %>
+        <div class="user-login">
+          <%= current_user.id %>
+        </div>
+        <% end %>
+
+          <% if user_signed_in? %>
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "logout" %>
+          <% elsif request.path == '/' %>
+            <p class="login">
+              Login
+            </p>
+             <% elsif request.path == '/users/sign_in' %>
+              <%= link_to root_path do %>
+                  <p class="login">
+                    Home
+                  </p>
+              <% end %>
+          <% else %>
+            <%= link_to user_session_path do %>
+              <p class="login">
+                  Login
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    
-</div>
+  
 
+    <% if user_signed_in? %>
+    <div class="bread-crumbs" >
+      <% if bread_crumbs.length == 1 && action_name != 'new' %>
+       All Category
+       
+       <% elsif ['today','incoming','overdue'].include? action_name %>
+         <%= link_to 'All Category', categories_path %> > <%= action_name %>
 
-      <%= yield %>
+        <% elsif bread_crumbs.length == 1 && action_name == 'new' %>
+        <%= link_to 'All Category', categories_path %> > <%= action_name %>
+       
+       <% elsif bread_crumbs.length == 2  && action_name != 'edit' %>
+         <%= link_to "All Category", categories_path %> > <%= get_cat_name(bread_crumbs[bread_crumbs.length - 1 ]) %> 
+
+        <% elsif bread_crumbs.length == 2  && action_name == 'edit' %>
+
+         <%= link_to "All Category", categories_path %> > <%= link_to get_cat_name(bread_crumbs[bread_crumbs.length - 1 ]), category_path(params[:id]) %> > <%= action_name %>
+         
+        <% elsif exist_edit_update? %>
+
+         <%= link_to "All Category", categories_path %> > <%= link_to  get_cat_name(bread_crumbs[bread_crumbs.length - 3 ]), category_path(params[:category_id]) %> > <%= link_to get_task_name(bread_crumbs[bread_crumbs.length - 1 ]), category_task_path(params[:category_id],params[:id] )  %> > <%= action_name %> 
+
+         <%= %>
+
+         <% elsif exist_new_update? %>
+
+          <% id = bread_crumbs.map {|x| Integer(x) rescue nil }.compact[0] %>
+          <%= link_to "All Category", categories_path %> > 
+          <%= link_to  get_cat_name(id),category_path(id) %> > New Task
+
+          <% elsif  bread_crumbs.length == 4 %>
+
+                   <%= link_to "All Category", categories_path %> > <%= link_to  get_cat_name(bread_crumbs[bread_crumbs.length - 3 ]), category_path(params[:category_id]) %> > <%= get_task_name( bread_crumbs[bread_crumbs.length - 1 ]) %> 
+
+         
+      <% else %>
+                <% id = bread_crumbs.map {|x| Integer(x) rescue nil }.compact[0] %>
+              <%= link_to "All Category", categories_path %> > <%= link_to get_cat_name(id), category_path(params[:category_id]) %> > New Task 
+
+       <%end%>
+       <%end%>
+    </div>
+      <div class="whole-section">
+
+      
+        <%= yield %> 
+        </div>
+   
     </main>
+   
   </body>
 </html>

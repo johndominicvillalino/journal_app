@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+.back-login {
+    width: 30px;
+    filter: invert(43%) sepia(11%) saturate(2003%) hue-rotate(167deg) brightness(93%) contrast(92%);
+
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.logo-image {
+    width: 100px;
+    filter: invert(43%) sepia(11%) saturate(2003%) hue-rotate(167deg) brightness(93%) contrast(92%);
+}
+
+.logo-row {
+    padding: 0 100px;
+    color: #41729F;
+}
+
+.bg-blue-cus {
+    background-color: #41729F   
+}
+
+.after-logo-row {
+    height: 70px;
+    padding: 0 125px;
+    display:flex;
+    justify-content: space-between;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.after-logo-row > div:nth-child(1)  {
+    width: 200px;
+    gap: 10px;
+}
+
+.after-logo-row > div:nth-child(1) > h2, .login, .logout {
+    color:#fff;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.login,#closeLogin,.back-login {
+    transition: all .40s;
+    cursor: pointer;
+}
+
+.login:hover, .back-login:hover {
+    transform: scale(1.1);
+}
+
+
+.after-logo-row > div:nth-child(1) > img {
+    width: 20px;
+    filter: invert(100%) sepia(0%) saturate(7438%) hue-rotate(285deg) brightness(111%) contrast(97%);
+}
+
+
+.hero-container {
+    padding-top: 150px;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    // background-image: url(asset_path('hero-image.jpg'));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-container > h3 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.hero-container > p {
+    font-size: 15px;
+  
+}
+
+.get-started{
+    background-color: #41729f;
+    padding: 15px 25px;
+    color: white;
+    font-size: 15px;
+    border-radius: 50px;
+    transition: all .40s;
+}
+
+.get-started:hover {
+    transform: scale(1.1);
+  
+    background-color: #274472;
+}
+
+.bread-crumbs {
+    background-color: #e8e8e8;
+    font-size: 12px;
+    padding: 5px 50px;
+    text-align: center;
+    color: #274472;
+    text-transform: uppercase;
+}
+
+.bread-crumbs > a {
+    color: #41729f;
+}
+

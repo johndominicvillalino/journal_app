@@ -1,11 +1,103 @@
 
+
+<%if notice != nil %>
+
+<% if notice.include? 'created' or notice.include? 'updated' or notice.include? 'success' %>
+ <% color='green' %>
+<%else%>
+ <% color='red' %>
+<%end %>
+<%end %>
+
+<div class="<%="text-center #{color}"%>" >
+<%= notice %>
+</div>
+
+<div class="summary-container">
+
+
 <div>
+  <% @categories.each do |category| %>
 
-             <%=  link_to "+ Category", new_category_path, :class => "border-2 p-2 text-red-200 rounded-full bg-blue-500 text-white text-sm"%>
+  <div class="category" > 
+  <div class="category-item">
+
+       <%= link_to  edit_category_path(category.id) do %>
+       <%= image_tag 'edit.svg', :class => 'edit-cat', :id => "edit#{category.id}" %> 
+        <%end%>
+        
+        <%= button_to  category_path(category.id), method: :delete, form: {data: {turbo_confirm: " \n This action will delete all tasks in #{category.name} category. \n \n Do you wish to proceed?"}}  do %>
+       <%= image_tag 'trash.svg', :class => 'del-cat' %> 
+        <%end%>
+
+      <%= link_to category.name, category_path(category.id), :class => 'cat-item-name', :id => category.id  %> 
+    </div>
+
+    <div class="count-and-add">
+      <div>
+      <%= category.tasks.count == 0 ? "-" : category.tasks.count %> 
+  </div>
+
+   <div>
+     <%= link_to new_category_task_path(category.id) do %> 
+       <div class="add-category no-margin">
+     <%= image_tag 'add-btn.svg' %>
+     </div>
+    <% end %>
+
+      </div>
+    </div>
+
+  </div>
+  <%end%>
+
+
+ <%= link_to new_category_path do %>
+  <div class="add-category">
+  New category
+  <%= image_tag 'add-btn.svg' %>
+
+ </div>
+   <%end %>
+
+  
+
+</div>
+<div>
+<div class="over-pending-incoming">
+
+   <%= link_to overdue_tasks_path do %>
+    <div>
+      Overdue (<%= overdue_task(current_user.id).count %>)
+    </div>
+  <%end%>
+
+    <%= link_to today_tasks_path do %>
+      <div>
+      Today (<%= today_task(current_user.id).count %>) 
+      </div>
+    <% end %>
+    
+    <%= link_to incoming_tasks_path do %>
+      <div>
+          Incoming (<%= incoming_task(current_user.id).count %>)
+      </div>
+    <% end %>
+    
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+<!--
+<div>
+    <%=  link_to "+ Category", new_category_path, :class => "border-2 p-2 text-red-200 rounded-full bg-blue-500 text-white text-sm"%>
   <div>
-
-
-
 <table style="width:50%;margin: 20px auto">
   <tr>
     <th style="border:0"></th>
@@ -14,22 +106,18 @@
   </tr>
   <% @categories.each do |category| %>
   <tr>
- 
-  <td class="edit-class bg-white text-center text-slate-200 hover:text-blue-500">
+   <td class="edit-class bg-white text-center text-slate-
+  200 hover:text-blue-500">
    <%= link_to "edit", edit_category_path(category.id) %>
-  
-  </td>
-
+    </td>
     <td>  <%= link_to category.name, category_path(category.id) %></td>
-  
-    <td>
+      <td>
       <%= link_to "+ Task", new_category_task_path(category.id), :class => " p-2 text-black-200  rounded-full hover:bg-blue-500 hover:text-white text-sm" %> 
     </td>
-
   </tr>
      <% end %>
-     
 </table>
+--->
 
 
 

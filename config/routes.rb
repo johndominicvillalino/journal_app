@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_for :users
 
-  root "categories#index"
+  devise_scope :user do
+   root  to: "pages#home"
+  end 
+
  
+  # root :to => redirect('/users/sign_in')
 
   #category
 
@@ -12,10 +17,13 @@ Rails.application.routes.draw do
   # get '/categories/new' => 'categories#new'
 
 
-  resources :categories do 
-    resources :tasks
-  end
+    resources :categories do 
+      resources :tasks
+    end
 
+    get '/categories/tasks/today', to: 'pages#today', as:'today_tasks'
+    get '/categories/tasks/overdue', to: 'pages#overdue', as:'overdue_tasks'
+    get '/categories/tasks/incoming', to: 'pages#incoming', as:'incoming_tasks'
 
 
 

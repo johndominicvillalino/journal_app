@@ -1,0 +1,51 @@
+
+
+
+      
+
+
+
+      <div class="hero-container">
+          <h3>
+          Organize your activities
+          </h3>
+          <p>
+          Make writing your daily activities a habit
+          </p>
+
+          <%= link_to new_user_registration_path  do %>
+          <button class="mt-10 p-10 get-started ">
+            Get Started
+          </button>
+          <% end %>
+      </div>
+
+
+      <div class="login-form-container">
+        <div class="login-close">
+          <%= image_tag ("back-login.svg"), class: "back-login" %>
+            </div>
+              <div>
+              <%= form_for(resource, as: resource_name, :html => {:class => 'flex flex-col gap-5'} ,  url: session_path(resource_name)) do |f| %>
+                <% end %>
+
+                <div id='login-error'>
+                    Invalid login
+                </div>
+                <br>
+
+                    <form class='login-form'>         
+                        <%= image_tag ("login-logo.svg"), class: "login-logo" %>
+                          <input id='email', class="login-home-input" name='email' placeholder="Email" type='text'>
+
+                          <input id='name', class="login-home-input"  name='password' placeholder="Password" type='password'>
+
+                          <button class="login-btn" id="loginHome">Login</button>
+                    </form>
+              <p class="mt-5 ml-3 text-blue-200 hover:text-blue-600 cursor-pointer">Forgot your password?</p>
+            </div>
+      
+            
+      </div>
+  <%= javascript_include_tag "customs/home"  %>    
+

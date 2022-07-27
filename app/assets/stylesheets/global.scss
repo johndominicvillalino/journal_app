@@ -1,0 +1,13 @@
+.whole-section {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 60vh;
+}
+
+.new-task-form  input, .edit-form-task input  {
+    border-radius: 20px !important;
+    padding: 8px 15px !important;
+    width: 100% !important;
+}

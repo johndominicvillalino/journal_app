@@ -1,5 +1,5 @@
 
-<%= form_with(model: task, url:category_tasks_path) do |form| %>
+<%= form_with(model: task, url:category_tasks_path(category_id:cat_id), :class => 'new-task-form') do |form| %>
 
 <% if task.errors.any? %>
     <div style="color: red">
@@ -14,21 +14,17 @@
   <% end %>
 
 
-
-  <h2 class="text-center"><%= "You're adding a task for #{cat_id.name}" %></h2>
-
-    <div class="flex flex-col gap-5 m-auto items-left form-container container m-6 items-center">
-
+  <div class="">
   <br>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+
+    <%= form.text_field :name, placeholder: 'Task Name' %>
   </div>
 
    <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+
+    <%= form.text_field :description, placeholder: 'Task Description'%>
   </div>
 
 
@@ -39,13 +35,13 @@
 
   
  <div>
-    <%= form.date_field  :deadline %>
+    <%= form.date_field  :deadline, :class => 'deadline' %>
   </div>
 
 <br>
 
- <div>
-    <%= form.submit "Submit", :class => 'cursor-pointer border-2 p-2 rounded-lg bg-blue-500 text-white text-sm mb-5' %>
+ <div class='submit-container'>
+    <%= form.submit "Submit", :class => 'submit-container cursor-pointer border-2 p-2 rounded-lg bg-blue-500 text-white text-sm' %>
   </div>
 
 

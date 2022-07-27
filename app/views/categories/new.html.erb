@@ -3,6 +3,146 @@
 
 
 
+<%if notice != nil %>
 
-<%= render "category-form", category: @category %>
+<% if notice.include? 'created' or notice.include? 'updated' %>
+ <% color='green' %>
+<%elsif%>
+ <% color='red' %>
+
+<%end %>
+<%end %>
+
+<div class="<%="text-center #{color}"%>" >
+<%= notice %>
+</div>
+
+<div class="summary-container" >
+
+
+<div>
+  <% @categories.each do |category| %>
+
+  <div class="category" > 
+  <div class="category-item">
+
+       <%= link_to  edit_category_path(category.id) do %>
+       <%= image_tag 'edit.svg', :class => 'edit-cat', :id => "edit#{category.id}" %> 
+        <%end%>
+        
+        <%= button_to  category_path(category.id), method: :delete, form: {data: {turbo_confirm: " \n This action will delete all tasks in #{category.name} category. \n \n Do you wish to proceed?"}}  do %>
+       <%= image_tag 'trash.svg', :class => 'del-cat' %> 
+        <%end%>
+
+      <%= link_to category.name, category_path(category.id), :class => 'cat-item-name', :id => category.id  %> 
+    </div>
+
+    <div class="count-and-add">
+      <div>
+      <%= category.tasks.count == 0 ? "-" : category.tasks.count %> 
+  </div>
+
+   <div>
+     <%= link_to new_category_task_path(category.id) do %> 
+       <div class="add-category no-margin">
+     <%= image_tag 'add-btn.svg' %>
+     </div>
+    <% end %>
+
+      </div>
+    </div>
+
+  </div>
+  <%end%>
+
+
+ <%= link_to new_category_path do %>
+  <div class="add-category">
+    New category
+  <%= image_tag 'add-btn.svg' %>
+
+ </div>
+   <%end %>
+
+  
+
+</div>
+<div>
+<div class="over-pending-incoming">
+
+   <%= link_to overdue_tasks_path do %>
+    <div>
+      Overdue (<%= overdue_task(current_user.id).count %>)
+    </div>
+  <%end%>
+
+    <%= link_to today_tasks_path do %>
+      <div>
+      Today (<%= today_task(current_user.id).count %>) 
+      </div>
+    <% end %>
+    
+    <%= link_to incoming_tasks_path do %>
+      <div>
+          Incoming (<%= incoming_task(current_user.id).count %>)
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="new-cat-modal">
+    <div class="new-cat-form-container">
+      
+            <span>
+        <%= link_to categories_path do %>
+            X
+               <% end %>
+            </span>
+         
+            <input id="newCatName" name="newCatName" type="text" placeholder="Categore Name">
+            <button id="newCatSubmit" class="border-2 p-2 text-blue-200 rounded-lg hover:bg-blue-500 hover:text-white text-sm">Submit</button>
+    </div>
+
+    
+<%= form_with(model: @category) do |form| %>
+
+<% if @category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul class="hidden-form-new-cat">
+        <% @category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="" style="display:none">
+
+  <div>
+    <%= form.text_field :name , id:"newCatNameHidden"%>
+  </div>
+  <div style="display:none">
+    <%= form.text_field :user_id, value: current_user.id %>
+  </div>
+
+ <div>
+    <%= form.submit "Submit", id:"submitCatHidden" %>
+  </div>
+
+
+    <% end %>
+
+
+</div>
+
+
+<%= javascript_include_tag "customs/newCat" %>
+
+
+<%# render "category-form", category: @category %>
 

@@ -12,9 +12,12 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  config.secret_key_base = '571cb640a83d44012996cce9982f63ed5757ac0f7be32633bbf96862ea2de6e48824ec547b75953596b2fa7505124403d69904ba02e2e6b7541f07e8530f68f3'
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
@@ -25,7 +28,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = nil
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -39,6 +42,10 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+  config.serve_static_assets = false
+  config.assets.compress = true
+  config.assets.digest = true
+
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil

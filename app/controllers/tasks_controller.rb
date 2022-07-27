@@ -1,18 +1,28 @@
 class TasksController < ApplicationController
 
-
+    before_action :authenticate_user!
     before_action :set_task, only: %i[show destroy edit update]
     before_action :get_cat, only: %i[ new create edit update]
 
-    def index
+    before_action :auth_route, only: %i[ show edit]
 
-        @tasks = Task.all
-        
+
+
+    def auth_route 
+
+        @category_owner = Category.find(params[:category_id]).user_id
+
+        if @category_owner != current_user.id
+            redirect_to categories_path
+        end
+
     end
-
 
     def show
         
+        
+       
+
 
     end
 
@@ -33,17 +43,27 @@ class TasksController < ApplicationController
 
     
     def destroy 
- 
+
+    
         @task.destroy
 
+        @match_url = request.base_url + "/categories/#{@task.category_id}/tasks/#{@task.id}"
         
         respond_to do |format|
-            format.html { redirect_to category_path(@task.category_id), notice: "#{@task.name} was deleted"}
+
+            @url = request.referrer
+            
+            if(@match_url == request.referrer) 
+                @url = request.base_url + "/categories/#{@task.category_id}"
+            end
+
+            format.html { redirect_to @url, notice: "#{@task.name} was deleted"}
           end
 
     end
 
     def edit
+
     end
 
     def new

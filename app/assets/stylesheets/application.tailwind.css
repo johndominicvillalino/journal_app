@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /*
 
 @layer components {
@@ -14,7 +16,8 @@
 
 
 body {
-  height: 120vh;
+  height: 100vh;
+ 
 }
 
 h1 {
@@ -48,3 +51,4 @@ tr:nth-child(even) {
   font-size: 10px;
   border: 0;
 }
+
